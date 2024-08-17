@@ -1,0 +1,36 @@
+//Agendamento Vacina Covid
+
+
+it('Agendamento', () => {
+// Provisório
+Cypress.on('uncaught:exception', (err, runnable) => false)
+
+//cy.visit('Agendamento2.html')
+cy.visit('https://pronto.blumenau.sc.gov.br/agendamentocovid/agendamento.aspx?Tipo=1')
+
+
+cy.get('#regiao').eq(0).select('ESCOLA AGRICOLA')
+
+cy.get('#unidade').eq(1).select('1510')
+
+cy.get('#cpf').type('99999999999')
+
+cy.get('#telefone').type('047999818211')
+
+cy.get('#cep').type('89032-400')
+
+cy.get('#numero').type('888')
+
+cy.get('select').eq(2).select('3') //4 É HORARIO INDIFERENTE, 3 - NOITE / 2 TARDE / 1 MANHÃ
+
+cy.get('#grupo').select('Pessoas com 60 anos ou mais - REFORÇO')
+
+cy.get('#checkbox1').check({force: true})
+cy.get('#checkbox2').check({force: true})
+cy.get('#checkbox3').check({force: true})
+cy.get('#checkbox4').check({force: true})
+cy.get('#confirmar').click({force: true})
+
+// Provisório
+Cypress.on('uncaught:exception', (err, runnable) => true)
+})
